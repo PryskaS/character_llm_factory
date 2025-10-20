@@ -1,0 +1,20 @@
+# .dockerignore
+
+# Git files
+.git
+.gitignore
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Local environment files
+.venv
+venv
+env
+
+# Pytest cache
+.pytest_cache
+
+# Large data files not needed for inference
+rick_corpus.txt

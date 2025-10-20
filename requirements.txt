@@ -1,0 +1,16 @@
+# Serving Dependencies
+fastapi[all]
+python-dotenv
+
+# ML & Core Dependencies
+torch
+transformers
+datasets
+accelerate
+requests
+beautifulsoup4
+
+# Quality & Testing
+pytest
+pytest-mock
+ruff
