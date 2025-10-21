@@ -20,19 +20,19 @@ This project implements the key phases of an MLOps pipeline for custom model cre
 
 ```mermaid
 graph TD
-    A[Web Source (Transcripts)] --> B{1. Data Pipeline (scraper.py)};
-    B -- Cleans & Formats --> C[Clean Corpus (rick_corpus.txt)];
-    C --> D{2. Fine-Tuning Script (trainer.py)};
+    A["Web Source (Transcripts)"] --> B{"1. Data Pipeline (scraper.py)"};
+    B -- "Cleans & Formats" --> C["Clean Corpus (rick_corpus.txt)"];
+    C --> D{"2. Fine-Tuning Script (trainer.py)"};
     subgraph "Hugging Face"
-      D -- Uses --> HF_Base(Base LLM - e.g., distilgpt2);
+      D -- Uses --> HF_Base("Base LLM - e.g., distilgpt2");
     end
-    D -- Saves --> E[Fine-Tuned Model (rick-llm-final)];
-    E --> F{3. Inference Service (FastAPI)};
+    D -- Saves --> E["Fine-Tuned Model (rick-llm-final)"];
+    E --> F{"3. Inference Service (FastAPI)"};
     subgraph "Docker Container"
-        F -- Loads Model --> E;
+        F -- "Loads Model" --> E;
     end
-    F --> G[API Endpoint (/generate)];
-    H[User] --> G;
+    F --> G["API Endpoint (/generate)"];
+    H["User"] --> G;
     G --> H;
 ```
 
