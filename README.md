@@ -15,7 +15,26 @@ This project is not just about fine-tuning; it's a case study on building an end
 * **CI/CD & Code Quality:** A **GitHub Actions** pipeline validates the API code's quality (`Ruff`) and correctness (`Pytest`) on every push, ensuring service integrity.
 
 ## 🏗️ The MLOps Lifecycle
-... (You can include the Mermaid diagram from the Portuguese version here) ...
+
+This project implements the key phases of an MLOps pipeline for custom model creation:
+
+```mermaid
+graph TD
+    A[Web Source (Transcripts)] --> B{1. Data Pipeline (scraper.py)};
+    B -- Cleans & Formats --> C[Clean Corpus (rick_corpus.txt)];
+    C --> D{2. Fine-Tuning Script (trainer.py)};
+    subgraph "Hugging Face"
+      D -- Uses --> HF_Base(Base LLM - e.g., distilgpt2);
+    end
+    D -- Saves --> E[Fine-Tuned Model (rick-llm-final)];
+    E --> F{3. Inference Service (FastAPI)};
+    subgraph "Docker Container"
+        F -- Loads Model --> E;
+    end
+    F --> G[API Endpoint (/generate)];
+    H[User] --> G;
+    G --> H;
+```
 
 ## 🏁 Getting Started
 
